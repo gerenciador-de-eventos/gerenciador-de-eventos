@@ -6,50 +6,26 @@
 package view;
 
 import Controller.CampusCtrl;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import Controller.PlaceCtrl;
 
 /**
  *
  * @author MAGNO
  */
-public class CampusPanelForm extends javax.swing.JPanel {
+public class PlacePanelForm extends javax.swing.JPanel {
 
     /**
-     * Creates new form Campus
-     *
-     *
+     * Creates new form PlacePanelForm
      */
     private static final long serialVersionUID = 1L;
-    private final CampusCtrl controller;
+    private final PlaceCtrl controller;
 
-    public CampusPanelForm() {
-
+    
+    public PlacePanelForm() {
         initComponents();
-
+        
         controller = new CampusCtrl(this);
-        controller.setTabel();
-    }
-
-    public JTable getTabelCourse() {
-        return tableCampus;
-    }
-
-    public JFormattedTextField getTxtId() {
-        return txtId;
-    }
-
-    public JTextField getTxtName() {
-        return txtName;
-    }
-
-    public JTextField getTxtFantasy() {
-        return txtFantasy;
-    }
-
-    public JTextField getTxtCity() {
-        return txtCity;
+        controller.setTable();
     }
 
     /**
@@ -61,8 +37,8 @@ public class CampusPanelForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
+        txtId = new javax.swing.JFormattedTextField();
         btnEdit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCampus = new javax.swing.JTable();
@@ -71,21 +47,19 @@ public class CampusPanelForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtFantasy = new javax.swing.JTextField();
-        txtCity = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtId = new javax.swing.JFormattedTextField();
-
-        btnAdd.setText("add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        btnAdd = new javax.swing.JButton();
 
         btnRemove.setText("remove");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveActionPerformed(evt);
+            }
+        });
+
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -118,14 +92,12 @@ public class CampusPanelForm extends javax.swing.JPanel {
 
         jLabel2.setText("name");
 
-        jLabel3.setText("name fantasy");
+        jLabel3.setText("campus");
 
-        jLabel4.setText("City");
-
-        txtId.setEditable(false);
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
@@ -138,7 +110,7 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addComponent(btnAdd)
                 .addGap(71, 71, 71)
                 .addComponent(btnRemove)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(btnEdit)
                 .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
@@ -153,19 +125,13 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFantasy))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCity)))
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFantasy)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,28 +147,16 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtFantasy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(33, 33, 33)
+                .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        controller.insert();
-        controller.setTabel();
-        controller.reset();
-    }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
@@ -211,6 +165,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         controller.update();
@@ -218,14 +176,17 @@ public class CampusPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void tableCampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCampusMouseClicked
         // TODO add your handling code here:
-         controller.getDataField();
+        controller.getDataField();
     }//GEN-LAST:event_tableCampusMouseClicked
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.setTabel();
+        controller.reset();
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -235,13 +196,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCampus;
-    private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtFantasy;
     private javax.swing.JFormattedTextField txtId;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
-
 }
