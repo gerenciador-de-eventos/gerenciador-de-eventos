@@ -77,12 +77,28 @@ public class PlaceDAO extends DatabaseGeneric implements ImplemetsPlace {
 
     @Override
     public List<Place> getAllCampus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    list = new ArrayList<>();
+        ResultSet rs = this.getAll();
+        try {
+            while (rs.next()) {
+                Place c = new Place();
+               
+                c.setIdPlace(rs.getInt("idPlace"));
+                c.setPlaceName(rs.getString("PlaceName"));
+                c.setPlaceCampus(rs.getString("PlaceCampus"));
+
+                list.add(c);
+            }
+            return list;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao retornar um Local pelo nome: " + ex.getMessage());
+        }
+        return null; 
     }
 
     @Override
     public Place getOneCampus(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.   
     }
 
 }
