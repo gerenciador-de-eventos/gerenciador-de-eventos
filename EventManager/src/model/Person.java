@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MAGNO
  */
 @Entity
-@Table(name = "person")
+@Table(name = "person", catalog = "event_manager", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
@@ -69,7 +69,7 @@ public class Person implements Serializable {
     @Basic(optional = false)
     @Column(name = "PersonPassword")
     private String personPassword;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personidPerson")
     private Collection<Event> eventCollection;
 
     public Person() {
