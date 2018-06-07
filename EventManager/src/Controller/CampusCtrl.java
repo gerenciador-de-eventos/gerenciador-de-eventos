@@ -34,7 +34,7 @@ public class CampusCtrl {
         panel.getTxtName().setText("");
         panel.getTxtCity().setText("");
         panel.getTxtFantasy().setText("");
-       
+
         panel.getTabelCourse().clearSelection();
     }
 
@@ -60,8 +60,6 @@ public class CampusCtrl {
         course.setCampusFantasyName(panel.getTxtFantasy().getText());
         course.setCampusCity(panel.getTxtCity().getText());
 
-        
-
         implementCampus.insert(course);
     }
 
@@ -69,7 +67,7 @@ public class CampusCtrl {
      *
      */
     public void update() {
-        
+
         Campus course = new Campus();
         course.setIdCampus(Integer.parseInt(panel.getTxtId().getText()));
         course.setCampusName(panel.getTxtName().getText());
