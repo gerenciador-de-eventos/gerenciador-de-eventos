@@ -24,8 +24,8 @@ public class PlacePanelForm extends javax.swing.JPanel {
     public PlacePanelForm() {
         initComponents();
         
-        controller = new CampusCtrl(this);
-        controller.setTable();
+        controller = new PlaceCtrl(this);
+//        controller.setTable();
     }
 
     /**
@@ -160,9 +160,9 @@ public class PlacePanelForm extends javax.swing.JPanel {
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
-        controller.delete();
-        controller.setTabel();
-        controller.reset();
+//        controller.delete();
+//        controller.setTabel();
+//        controller.reset();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -171,21 +171,21 @@ public class PlacePanelForm extends javax.swing.JPanel {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        controller.update();
-        controller.setTabel();
-        controller.reset();
+//        controller.update();
+//        controller.setTabel();
+//        controller.reset();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void tableCampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCampusMouseClicked
         // TODO add your handling code here:
-        controller.getDataField();
+//        controller.getDataField();
     }//GEN-LAST:event_tableCampusMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        controller.insert();
-        controller.setTabel();
-        controller.reset();
+//        controller.insert();
+//        controller.setTabel();
+//        controller.reset();
     }//GEN-LAST:event_btnAddActionPerformed
 
 
