@@ -21,25 +21,40 @@ public class CampusDAO extends DatabaseGeneric implements ImplemetsCampus {
 
     @Override
     public void insert(Campus campus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<Object, Object> mapObj = new HashMap<>();
+
+        mapObj.put("CampusName", campus.getCampusName());
+        mapObj.put("CampusFantasyName", campus.getCampusFantasyName());
+        mapObj.put("CampusCity", campus.getCampusCity());
+
+        this.genericInsert(mapObj);
     }
 
     @Override
     public void update(Campus campus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<Object, Object> mapObj = new HashMap<>();
+        Map<Object, Object> mapConditions = new HashMap<>();
+        mapConditions.put("idCampus", campus.getIdCampus());
+        mapObj.put("CampusName", campus.getCampusName());
+        mapObj.put("CampusFantasyName", campus.getCampusFantasyName());
+        mapObj.put("CampusCity", campus.getCampusCity());
+
+        this.genericUpdate(mapObj, mapConditions);
     }
 
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<Object, Object> mapConditions = new HashMap<>();
+        mapConditions.put("idCampus", id);
+        this.genericDelete(mapConditions);
     }
 
     @Override
     public List<Campus> getCampusByName(String name) {
-         this.list = new ArrayList<>();
-         try {
+        this.list = new ArrayList<>();
+        try {
             ResultSet rs = this.getLike("name", name);
-            while (rs.next()) { 
+            while (rs.next()) {
                 Campus c = new Campus();
                 c.setIdCampus(rs.getInt(1));
                 c.setCampusName(rs.getString("CampusName"));
@@ -48,26 +63,23 @@ public class CampusDAO extends DatabaseGeneric implements ImplemetsCampus {
                 list.add(c);
             }
             return list;
-         }
-            catch (SQLException ex){
-            System.out.println("Houve um erro ao obter um pokemon: \n\n\n\n" + ex.getMessage());
-             }
+        } catch (SQLException ex) {
+            System.out.println("Houve um erro ao obter um campus: \n\n\n\n" + ex.getMessage());
+        }
         return null;
     }
-    
 
     @Override
     public List<Campus> getAllCampus() {
         list = new ArrayList<>();
         ResultSet rs = this.getAll();
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 Campus c = new Campus();
                 c.setIdCampus(rs.getInt("idCampus"));
                 c.setCampusName(rs.getString("CampusName"));
                 c.setCampusFantasyName(rs.getString("CampusFantasyName"));
-                
-                
+                c.setCampusCity(rs.getString("CampusCity"));
 
                 list.add(c);
             }
@@ -75,13 +87,23 @@ public class CampusDAO extends DatabaseGeneric implements ImplemetsCampus {
         } catch (SQLException ex) {
             System.out.println("Erro ao retornar um campus pelo nome: " + ex.getMessage());
         }
-        return null;  
+        return null;
     }
 
     @Override
     public Campus getOneCampus(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet rs = this.getOne(id);
+        Campus c = new Campus();
+        try {
+            c.setIdCampus(rs.getInt(1));
+
+            c.setCampusName(rs.getString("CampusName"));
+            c.setCampusFantasyName(rs.getString("CampusFantasyName"));
+            c.setCampusCity(rs.getString("CampusCity"));
+            return c;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao retornar um pokemon pelo id: " + ex.getMessage());
+        }
+        return null;
     }
 }
-
-
