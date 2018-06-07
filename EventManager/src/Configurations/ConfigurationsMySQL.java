@@ -22,5 +22,4 @@ public class ConfigurationsMySQL extends Configurations {
         super.DRIV = "com.mysql.jdbc.Driver";
     }
 
-
 }

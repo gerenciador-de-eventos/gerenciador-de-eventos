@@ -5,7 +5,7 @@
  */
 package view;
 
-import Controller.CampusCtrl;
+import Controller.PersonController;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author MAGNO
  */
-public class CampusPanelForm extends javax.swing.JPanel {
+public class PersonPanelForm extends javax.swing.JPanel {
 
     /**
      * Creates new form Campus
@@ -22,18 +22,18 @@ public class CampusPanelForm extends javax.swing.JPanel {
      *
      */
     private static final long serialVersionUID = 1L;
-    private final CampusCtrl controller;
+    private final PersonController controller;
 
-    public CampusPanelForm() {
+    public PersonPanelForm() {
 
         initComponents();
 
-        controller = new CampusCtrl(this);
+        controller = new PersonController(this);
         controller.setTabel();
     }
 
-    public JTable getTabelCourse() {
-        return tableCampus;
+    public JTable getTablePerson() {
+        return tablePerson;
     }
 
     public JFormattedTextField getTxtId() {
@@ -44,12 +44,12 @@ public class CampusPanelForm extends javax.swing.JPanel {
         return txtName;
     }
 
-    public JTextField getTxtFantasy() {
-        return txtFantasy;
+    public JTextField getTxtPassword() {
+        return txtPassword;
     }
 
-    public JTextField getTxtCity() {
-        return txtCity;
+    public JTextField getTxtCPF() {
+        return txtCPF;
     }
 
     /**
@@ -65,13 +65,13 @@ public class CampusPanelForm extends javax.swing.JPanel {
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCampus = new javax.swing.JTable();
+        tablePerson = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        txtFantasy = new javax.swing.JTextField();
-        txtCity = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JFormattedTextField();
 
@@ -96,7 +96,7 @@ public class CampusPanelForm extends javax.swing.JPanel {
             }
         });
 
-        tableCampus.setModel(new javax.swing.table.DefaultTableModel(
+        tablePerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -107,20 +107,20 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableCampus.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablePerson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableCampusMouseClicked(evt);
+                tablePersonMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableCampus);
+        jScrollPane1.setViewportView(tablePerson);
 
         jLabel1.setText("id");
 
         jLabel2.setText("name");
 
-        jLabel3.setText("name fantasy");
+        jLabel3.setText("password");
 
-        jLabel4.setText("City");
+        jLabel4.setText("CPF");
 
         txtId.setEditable(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -160,11 +160,11 @@ public class CampusPanelForm extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFantasy))
+                        .addComponent(txtPassword))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(txtCity)))
+                        .addComponent(txtCPF)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,10 +179,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtFantasy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,10 +221,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
-    private void tableCampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCampusMouseClicked
+    private void tablePersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePersonMouseClicked
         // TODO add your handling code here:
         controller.getDataField();
-    }//GEN-LAST:event_tableCampusMouseClicked
+    }//GEN-LAST:event_tablePersonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,11 +236,11 @@ public class CampusPanelForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableCampus;
-    private javax.swing.JTextField txtCity;
-    private javax.swing.JTextField txtFantasy;
+    private javax.swing.JTable tablePerson;
+    private javax.swing.JTextField txtCPF;
     private javax.swing.JFormattedTextField txtId;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 
 }

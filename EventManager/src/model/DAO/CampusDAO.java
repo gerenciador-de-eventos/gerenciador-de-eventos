@@ -16,7 +16,7 @@ public class CampusDAO extends DatabaseGeneric implements ImplemetsCampus {
     public ArrayList<Campus> list;
 
     public CampusDAO() {
-        super(new ConfigurationsMySQL(), "Campus");
+        super(new ConfigurationsMySQL(), "campus");
     }
 
     @Override

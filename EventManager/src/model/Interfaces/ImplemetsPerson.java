@@ -7,22 +7,23 @@ package model.Interfaces;
 
 import java.util.List;
 import model.Campus;
+import model.Person;
 
 /**
  *
  * @author MAGNO
  */
-public interface ImplemetsCampus {
+public interface ImplemetsPerson {
 
-    public void insert(Campus campus);
+    public void insert(Person person);
 
-    public void update(Campus campus);
+    public void update(Person person);
 
     public void delete(int id);
 
-    public List<Campus> getCampusByName(String name);
+    public List<Person> getPersonByName(String name);
 
-    public List<Campus> getAllCampus();
+    public List<Person> getAllPerson();
 
-    public Campus getOneCampus(int id);
+    public Person getOnePerson(int id);
 }
