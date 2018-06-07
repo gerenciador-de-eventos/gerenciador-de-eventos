@@ -15,7 +15,7 @@ public class ConfigurationsMySQL extends Configurations {
         super.TYPE = "mysql";
         super.HOST = "localhost";
         super.USER = "root";
-        super.PASS = "root";
+        super.PASS = "";
         super.PORT = "3306";
         super.BASE = "event_manager";
         super.DRIV = "com.mysql.jdbc.Driver";

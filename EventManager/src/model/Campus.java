@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MAGNO
  */
 @Entity
-@Table(name = "campus")
+@Table(name = "campus", catalog = "event_manager", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Campus.findAll", query = "SELECT c FROM Campus c")
@@ -51,7 +51,7 @@ public class Campus implements Serializable {
     @Basic(optional = false)
     @Column(name = "CampusFantasyName")
     private String campusFantasyName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "campus")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "campusidCampus")
     private Collection<Event> eventCollection;
 
     public Campus() {
