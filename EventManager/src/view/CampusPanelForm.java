@@ -138,12 +138,9 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addComponent(btnAdd)
                 .addGap(71, 71, 71)
                 .addComponent(btnRemove)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addComponent(btnEdit)
                 .addGap(30, 30, 30))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
@@ -165,6 +162,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(txtCity)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,7 +192,7 @@ public class CampusPanelForm extends javax.swing.JPanel {
                     .addComponent(btnAdd)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
