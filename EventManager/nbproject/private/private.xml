@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MAGNO/Documents/gerenciamento-de-eventos/EventManager/src/Controller/CampusCtrl.java</file>
-            <file>file:/C:/Users/MAGNO/Documents/gerenciamento-de-eventos/EventManager/src/view/PlacePanelForm.java</file>
-            <file>file:/C:/Users/MAGNO/Documents/gerenciamento-de-eventos/EventManager/src/Database/Database.java</file>
-            <file>file:/C:/Users/MAGNO/Documents/gerenciamento-de-eventos/EventManager/src/Controller/PlaceCtrl.java</file>
-            <file>file:/C:/Users/MAGNO/Documents/gerenciamento-de-eventos/EventManager/src/view/CampusPanelForm.java</file>
+            <file>file:/C:/Users/MAGNO/Documents/evento/gerenciamento-de-eventos/EventManager/src/view/PlacePanelForm.java</file>
+            <file>file:/C:/Users/MAGNO/Documents/evento/gerenciamento-de-eventos/EventManager/src/Controller/PlaceCtrl.java</file>
+            <file>file:/C:/Users/MAGNO/Documents/evento/gerenciamento-de-eventos/EventManager/src/view/EventManager.java</file>
+            <file>file:/C:/Users/MAGNO/Documents/evento/gerenciamento-de-eventos/EventManager/src/Controller/CampusCtrl.java</file>
+            <file>file:/C:/Users/MAGNO/Documents/evento/gerenciamento-de-eventos/EventManager/src/Main/Main.java</file>
         </group>
     </open-files>
 </project-private>

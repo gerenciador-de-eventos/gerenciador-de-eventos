@@ -29,6 +29,7 @@ public class EventManager extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuPerson = new javax.swing.JMenuItem();
@@ -36,6 +37,10 @@ public class EventManager extends javax.swing.JFrame {
         menuCampus = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -43,6 +48,19 @@ public class EventManager extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 655, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 432, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Admin");
 
@@ -57,7 +75,7 @@ public class EventManager extends javax.swing.JFrame {
         jMenu1.add(menuPerson);
 
         menuPlace.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        menuPlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/2x/baseline_place_black_18dp.png"))); // NOI18N
+        menuPlace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_place_black_18dp.png"))); // NOI18N
         menuPlace.setText("Place");
         menuPlace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +85,7 @@ public class EventManager extends javax.swing.JFrame {
         jMenu1.add(menuPlace);
 
         menuCampus.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        menuCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_cast_for_education_black_18dp.png"))); // NOI18N
         menuCampus.setText("Campus");
         menuCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,12 +95,49 @@ public class EventManager extends javax.swing.JFrame {
         jMenu1.add(menuCampus);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_phonelink_black_18dp.png"))); // NOI18N
         jMenuItem3.setText("Equipaments");
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Infos");
+
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_face_black_18dp.png"))); // NOI18N
+        jMenuItem4.setText("Person");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_place_black_18dp.png"))); // NOI18N
+        jMenuItem5.setText("Place");
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_cast_for_education_black_18dp.png"))); // NOI18N
+        jMenuItem7.setText("Campus");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_phonelink_black_18dp.png"))); // NOI18N
+        jMenuItem6.setText("Equipaments");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
         jMenuBar1.add(jMenu2);
         jMenuBar1.add(jMenu3);
 
@@ -91,11 +147,17 @@ public class EventManager extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,6 +174,18 @@ public class EventManager extends javax.swing.JFrame {
     private void menuCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCampusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuCampusActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +223,7 @@ public class EventManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -156,6 +231,10 @@ public class EventManager extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem menuCampus;
     private javax.swing.JMenuItem menuPerson;
     private javax.swing.JMenuItem menuPlace;
