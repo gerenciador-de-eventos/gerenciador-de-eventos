@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author MAGNO
@@ -14,7 +17,14 @@ public class EventManager extends javax.swing.JFrame {
     /**
      * Creates new form EventManager
      */
+    JPanel placePanel;
+    JPanel campusPanel;
+    private CardLayout cardLayout;
+    private JPanel painelCardLayout;
+    
     public EventManager() {
+        placePanel = new PlacePanelForm();
+        campusPanel = new CampusPanelForm();
         initComponents();
     }
 
@@ -29,7 +39,8 @@ public class EventManager extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jLabel1 = new javax.swing.JLabel();
+        jPanelFrmPricipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuPerson = new javax.swing.JMenuItem();
@@ -49,17 +60,17 @@ public class EventManager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jInternalFrame1.setVisible(true);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_Primary_logo_on_transparent_159x73.png"))); // NOI18N
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 655, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelFrmPricipalLayout = new javax.swing.GroupLayout(jPanelFrmPricipal);
+        jPanelFrmPricipal.setLayout(jPanelFrmPricipalLayout);
+        jPanelFrmPricipalLayout.setHorizontalGroup(
+            jPanelFrmPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 612, Short.MAX_VALUE)
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+        jPanelFrmPricipalLayout.setVerticalGroup(
+            jPanelFrmPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Admin");
@@ -148,16 +159,21 @@ public class EventManager extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE)
+                .addComponent(jPanelFrmPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelFrmPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,10 +181,15 @@ public class EventManager extends javax.swing.JFrame {
 
     private void menuPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPersonActionPerformed
         // TODO add your handling code here:
+        jPanelFrmPricipal = new PersonPanelForm();
+        jPanelFrmPricipal.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_menuPersonActionPerformed
 
     private void menuPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPlaceActionPerformed
-        // TODO add your handling code here:
+      //place 
+      this.jPanelFrmPricipal.add(this.placePanel);
+      this.jPanelFrmPricipal.validate();
+      this.jPanelFrmPricipal.repaint();
     }//GEN-LAST:event_menuPlaceActionPerformed
 
     private void menuCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCampusActionPerformed
@@ -185,8 +206,9 @@ public class EventManager extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -223,7 +245,7 @@ public class EventManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -235,6 +257,7 @@ public class EventManager extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPanel jPanelFrmPricipal;
     private javax.swing.JMenuItem menuCampus;
     private javax.swing.JMenuItem menuPerson;
     private javax.swing.JMenuItem menuPlace;

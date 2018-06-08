@@ -4,16 +4,15 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import view.CampusPanelForm;
+import view.EventManager;
 import view.PersonPanelForm;
 import view.PlacePanelForm;
 
-public class Main extends JFrame {
+public class Main  {
 
     public static void main(String args[]) {
-        Main me = new Main();
-        me.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        me.setSize(new Dimension(500, 410));
-        me.add(new PlacePanelForm());
-        me.setVisible(true);
+        EventManager e = new EventManager();
+        e.setVisible(true);
+        
     }
 }
