@@ -6,26 +6,88 @@
 package view;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyVetoException;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
  * @author MAGNO
  */
-public class EventManager extends javax.swing.JFrame {
+public class EventManager extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form EventManager
      */
-    JPanel placePanel;
-    JPanel campusPanel;
-    private CardLayout cardLayout;
-    private JPanel painelCardLayout;
-    
+    JDesktopPane desktop;
+
     public EventManager() {
-        placePanel = new PlacePanelForm();
-        campusPanel = new CampusPanelForm();
+        super("InternalFrame");
+//Make the big window be indented 50 pixels from each edge
+        //of the screen.
+        int inset = 50;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(inset, inset,
+                screenSize.width - inset * 2,
+                screenSize.height - inset * 2);
+
+        //Set up the GUI.
+        desktop = new JDesktopPane(); //a specialized layered pane
+        createFrame(); //create first "window"
+        setContentPane(desktop);
+        setJMenuBar(createMenuBar());
+
+        //Make dragging a little faster but perhaps uglier.
+        desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
         initComponents();
+    }
+
+    protected JMenuBar createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+
+        //Set up the lone menu.
+        JMenu menu = new JMenu("Document");
+        menu.setMnemonic(KeyEvent.VK_D);
+        menuBar.add(menu);
+
+        //Set up the first menu item.
+        JMenuItem menuItem = new JMenuItem("New");
+        menuItem.setMnemonic(KeyEvent.VK_N);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_N, ActionEvent.ALT_MASK));
+        menuItem.setActionCommand("new");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
+
+        //Set up the second menu item.
+        menuItem = new JMenuItem("Quit");
+        menuItem.setMnemonic(KeyEvent.VK_Q);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_Q, ActionEvent.ALT_MASK));
+        menuItem.setActionCommand("quit");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
+
+        return menuBar;
+    }
+
+    private static void createAndShowGUI() {
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
+        EventManager frame = new EventManager();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 
     /**
@@ -39,8 +101,6 @@ public class EventManager extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
-        jPanelFrmPricipal = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuPerson = new javax.swing.JMenuItem();
@@ -59,19 +119,6 @@ public class EventManager extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_Primary_logo_on_transparent_159x73.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanelFrmPricipalLayout = new javax.swing.GroupLayout(jPanelFrmPricipal);
-        jPanelFrmPricipal.setLayout(jPanelFrmPricipalLayout);
-        jPanelFrmPricipalLayout.setHorizontalGroup(
-            jPanelFrmPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
-        );
-        jPanelFrmPricipalLayout.setVerticalGroup(
-            jPanelFrmPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
-        );
 
         jMenu1.setText("Admin");
 
@@ -158,22 +205,11 @@ public class EventManager extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
-                .addComponent(jPanelFrmPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 809, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelFrmPricipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+            .addGap(0, 519, Short.MAX_VALUE)
         );
 
         pack();
@@ -181,15 +217,12 @@ public class EventManager extends javax.swing.JFrame {
 
     private void menuPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPersonActionPerformed
         // TODO add your handling code here:
-        jPanelFrmPricipal = new PersonPanelForm();
-        jPanelFrmPricipal.setVisible(rootPaneCheckingEnabled);
+
     }//GEN-LAST:event_menuPersonActionPerformed
 
     private void menuPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPlaceActionPerformed
-      //place 
-      this.jPanelFrmPricipal.add(this.placePanel);
-      this.jPanelFrmPricipal.validate();
-      this.jPanelFrmPricipal.repaint();
+        //place 
+
     }//GEN-LAST:event_menuPlaceActionPerformed
 
     private void menuCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCampusActionPerformed
@@ -206,9 +239,9 @@ public class EventManager extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -239,13 +272,13 @@ public class EventManager extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EventManager().setVisible(true);
+//                new EventManager().setVisible(true);
+                createAndShowGUI();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -257,9 +290,33 @@ public class EventManager extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPanel jPanelFrmPricipal;
     private javax.swing.JMenuItem menuCampus;
     private javax.swing.JMenuItem menuPerson;
     private javax.swing.JMenuItem menuPlace;
     // End of variables declaration//GEN-END:variables
+ //Create a new internal frame.
+    protected void createFrame() {
+        PlacePanelForm frame = new PlacePanelForm();
+        frame.setVisible(true); //necessary as of 1.3
+        desktop.add(frame);
+        try {
+            frame.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+    }
+
+    //Quit the application.
+    protected void quit() {
+        System.exit(0);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if ("new".equals(e.getActionCommand())) { //new
+            createFrame();
+        } else { //quit
+            quit();
+        }
+    }
+
 }
