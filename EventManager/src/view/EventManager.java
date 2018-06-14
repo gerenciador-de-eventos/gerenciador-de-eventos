@@ -37,13 +37,13 @@ public class EventManager extends javax.swing.JFrame {
     private CampusJframe frmCampus;
     private PersonJframe frmPersonJframe;
     private EquipamentPanelForm frmEquipamentPanelForm;
-    private final Person person;
 
-    public EventManager(Person p) {
-        super("Agenda de Eventos - Programação Desktop - UTFPR-CP -  professor: Diogo Cezar");
+
+    public EventManager() {
+        super("Agenda de Eventos");
         //Make the big window be indented 50 pixels from each edge
         //of the screen.
-        this.person = p;
+
         setExtendedState(MAXIMIZED_BOTH);
 
         initComponents();
@@ -291,9 +291,9 @@ public class EventManager extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            private Person person;
+
             public void run() {
-                new EventManager(this.person).setVisible(true);
+                new EventManager().setVisible(true);
 
             }
         });

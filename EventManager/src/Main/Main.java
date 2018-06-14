@@ -12,14 +12,15 @@ import view.PlacePanelForm;
 public class Main  {
 
     public static void main(String args[]) {
-//        EventManager e = new EventManager();
-//        e.setVisible(true);;
-      
+   
+    EventManager e = new EventManager();    
+    e.setVisible(true);;
+//      
 //com login 
-
-        Login l = new Login();
-        l.setVisible(true);
-        
+//
+//        Login l = new Login();
+//        l.setVisible(true);
+//        
         
     }
 }
