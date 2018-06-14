@@ -25,12 +25,12 @@ public class Login extends javax.swing.JFrame {
         controller = new LoginCtrl();
     }
 
-    public void abrirTelaPrincipal(Person p) 
-    {
-        EventManager e = new EventManager(p);
-        e.setVisible(true);
-        this.setVisible(false);
-    }
+//    public void abrirTelaPrincipal(Person p) 
+//    {
+//        EventManager e = new EventManager(p);
+//        e.setVisible(true);
+//        this.setVisible(false);
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,7 +133,7 @@ public class Login extends javax.swing.JFrame {
         p = controller.loginPerson(txtEmail.getText(), txtSenha.getText());
         if(p != null)
         {
-            abrirTelaPrincipal(p);
+//            abrirTelaPrincipal(p);
         }
         else{
             JOptionPane.showConfirmDialog(rootPane, "Senha errada");
