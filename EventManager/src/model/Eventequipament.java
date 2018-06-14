@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author MAGNO
  */
 @Entity
-@Table(name = "eventequipament", catalog = "event_manager", schema = "")
+@Table(name = "eventequipament")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Eventequipament.findAll", query = "SELECT e FROM Eventequipament e")

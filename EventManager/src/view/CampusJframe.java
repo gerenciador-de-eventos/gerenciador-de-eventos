@@ -6,6 +6,7 @@
 package view;
 
 import Controller.CampusCtrl;
+import Controller.PlaceCtrl;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,22 +15,33 @@ import javax.swing.JTextField;
  *
  * @author MAGNO
  */
-public class CampusPanelForm extends javax.swing.JPanel {
+public class CampusJframe extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Campus
-     *
-     *
+     * Creates new form CampusJframe
      */
     private static final long serialVersionUID = 1L;
     private final CampusCtrl controller;
+    private EventManager viewPrincipal;
 
-    public CampusPanelForm() {
-
+    public CampusJframe() {
         initComponents();
-        controller = null;
-//        controller = new CampusCtrl(this);
-//        controller.setTabel();
+        controller = new CampusCtrl(this);
+        controller.setTabel();
+    }
+
+    public CampusJframe(EventManager aThis) {
+        //Esconde barra de título padrão do JInternalFrama.
+        setRootPaneCheckingEnabled(false);
+
+        //Inicialização dos componentes padrões do JFrame.
+        initComponents();
+        this.viewPrincipal = viewPrincipal;
+
+        //Carrega todas os modelos de tabelas.
+        initComponents();
+        controller = new CampusCtrl(this);
+        controller.setTabel();
     }
 
     public JTable getTabelCourse() {
@@ -61,19 +73,28 @@ public class CampusPanelForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAdd = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableCampus = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtFantasy = new javax.swing.JTextField();
         txtCity = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnRemove = new javax.swing.JButton();
         txtId = new javax.swing.JFormattedTextField();
+        btnEdit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableCampus = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Campus");
+
+        jLabel1.setText("id");
+
+        jLabel2.setText("name");
+
+        jLabel3.setText("name fantasy");
 
         btnAdd.setText("add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -82,10 +103,19 @@ public class CampusPanelForm extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("City");
+
         btnRemove.setText("remove");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveActionPerformed(evt);
+            }
+        });
+
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -114,23 +144,8 @@ public class CampusPanelForm extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableCampus);
 
-        jLabel1.setText("id");
-
-        jLabel2.setText("name");
-
-        jLabel3.setText("name fantasy");
-
-        jLabel4.setText("City");
-
-        txtId.setEditable(false);
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -138,7 +153,7 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addComponent(btnAdd)
                 .addGap(71, 71, 71)
                 .addComponent(btnRemove)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addComponent(btnEdit)
                 .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
@@ -165,7 +180,7 @@ public class CampusPanelForm extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -192,10 +207,11 @@ public class CampusPanelForm extends javax.swing.JPanel {
                     .addComponent(btnAdd)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
 
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -211,6 +227,10 @@ public class CampusPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         controller.update();
@@ -218,15 +238,45 @@ public class CampusPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void tableCampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCampusMouseClicked
         // TODO add your handling code here:
         controller.getDataField();
     }//GEN-LAST:event_tableCampusMouseClicked
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CampusJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CampusJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CampusJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CampusJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CampusJframe().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -243,5 +293,4 @@ public class CampusPanelForm extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txtId;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
-
 }

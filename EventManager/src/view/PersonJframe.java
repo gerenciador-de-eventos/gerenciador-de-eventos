@@ -20,23 +20,44 @@ import javax.swing.JTextField;
  *
  * @author MAGNO
  */
-public class PersonPanelForm extends javax.swing.JPanel {
+public class PersonJframe extends javax.swing.JInternalFrame {
 
+    /**
+     * Creates new form PersonJframe
+     */
     private static final long serialVersionUID = 1L;
     private final PersonController controller;
+    private EventManager viewPrincipal;
 
-    public PersonPanelForm() {
-
+    public PersonJframe() {
         initComponents();
-        controller = null;
-//        controller = new PersonController(this);
-//        controller.setTable();
+        controller = new PersonController(this);
+        controller.setTable();
 
         jComboBoxHourWork.insertItemAt("08h - 13h", 0);
         jComboBoxHourWork.insertItemAt("13h - 18h", 1);
         jComboBoxHourWork.insertItemAt("18h - 23h", 2);
         jDateChooserDateBirth.setCalendar(Calendar.getInstance());
+    }
 
+    PersonJframe(EventManager aThis) {
+       //Esconde barra de título padrão do JInternalFrama.
+        setRootPaneCheckingEnabled(false);
+        
+
+        //Inicialização dos componentes padrões do JFrame.
+        
+        this.viewPrincipal = viewPrincipal;
+
+        //Carrega todas os modelos de tabelas.
+        initComponents();
+        controller = new PersonController(this);
+        controller.setTable();
+
+        jComboBoxHourWork.insertItemAt("08h - 13h", 0);
+        jComboBoxHourWork.insertItemAt("13h - 18h", 1);
+        jComboBoxHourWork.insertItemAt("18h - 23h", 2);
+        jDateChooserDateBirth.setCalendar(Calendar.getInstance());
     }
 
     public JTable getTablePerson() {
@@ -104,35 +125,54 @@ public class PersonPanelForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtName = new javax.swing.JTextField();
+        jDateChooserDateBirth = new com.toedter.calendar.JDateChooser();
+        txtCPF = new javax.swing.JTextField();
+        jCheckBoxPrivileges = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBoxHourWork = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
+        txtId = new javax.swing.JFormattedTextField();
+        txtPassword = new javax.swing.JPasswordField();
         btnRemove = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePerson = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtCPF = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtId = new javax.swing.JFormattedTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtRG = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jDateChooserDateBirth = new com.toedter.calendar.JDateChooser();
-        jCheckBoxPrivileges = new javax.swing.JCheckBox();
-        jComboBoxHourWork = new javax.swing.JComboBox<>();
-        txtPassword = new javax.swing.JPasswordField();
-        btnClean = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jCheckBoxPrivileges.setLabel("Admin");
+
+        jLabel4.setText("CPF:");
+
+        jComboBoxHourWork.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHourWorkActionPerformed(evt);
+            }
+        });
 
         btnAdd.setText("add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
+            }
+        });
+
+        txtId.setEditable(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -143,10 +183,19 @@ public class PersonPanelForm extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("E-mail:");
+
         btnEdit.setText("edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
+            }
+        });
+
+        btnClean.setText("Clean");
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
             }
         });
 
@@ -168,48 +217,22 @@ public class PersonPanelForm extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablePerson);
 
-        jLabel1.setText("id");
-
-        jLabel2.setText("Name:");
-
-        jLabel3.setText("Password:");
-
-        jLabel4.setText("CPF:");
-
-        txtId.setEditable(false);
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("E-mail:");
-
         jLabel6.setText("RG:");
+
+        jLabel1.setText("id");
 
         jLabel7.setText("Date of birth:");
 
+        jLabel2.setText("Name:");
+
         jLabel8.setText("Privileges:");
+
+        jLabel3.setText("Password:");
 
         jLabel9.setText("Hour work:");
 
-        jCheckBoxPrivileges.setLabel("Admin");
-
-        jComboBoxHourWork.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxHourWorkActionPerformed(evt);
-            }
-        });
-
-        btnClean.setText("Clean");
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -302,7 +325,7 @@ public class PersonPanelForm extends javax.swing.JPanel {
                         .addComponent(jCheckBoxPrivileges)
                         .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
@@ -311,8 +334,13 @@ public class PersonPanelForm extends javax.swing.JPanel {
                     .addComponent(btnClean))
                 .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxHourWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHourWorkActionPerformed
+
+    }//GEN-LAST:event_jComboBoxHourWorkActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
@@ -320,6 +348,10 @@ public class PersonPanelForm extends javax.swing.JPanel {
         controller.setTable();
         controller.reset();
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
@@ -335,23 +367,48 @@ public class PersonPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        controller.reset();
+    }//GEN-LAST:event_btnCleanActionPerformed
 
     private void tablePersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePersonMouseClicked
         controller.getDataField();
     }//GEN-LAST:event_tablePersonMouseClicked
 
-    private void jComboBoxHourWorkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHourWorkActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PersonJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PersonJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PersonJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PersonJframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-
-    }//GEN-LAST:event_jComboBoxHourWorkActionPerformed
-
-    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        controller.reset();
-    }//GEN-LAST:event_btnCleanActionPerformed
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PersonJframe().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -379,5 +436,4 @@ public class PersonPanelForm extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtRG;
     // End of variables declaration//GEN-END:variables
-
 }

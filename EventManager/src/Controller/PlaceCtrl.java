@@ -11,6 +11,7 @@ import model.DAO.PlaceDAO;
 import model.Interfaces.ImplemetsPlace;
 import model.Place;
 import model.Table.TableModelPlace;
+import view.PlaceJFrame;
 import view.PlacePanelForm;
 
 /**
@@ -19,16 +20,20 @@ import view.PlacePanelForm;
  */
 public class PlaceCtrl {
 
-    private final PlacePanelForm panel;
+    private final PlaceJFrame panel;
+        
+    
+
     private final ImplemetsPlace implementCampus;
     private List<Place> list;
 
-    public PlaceCtrl(PlacePanelForm panel) {
+    public PlaceCtrl(PlaceJFrame panel) {
         this.panel = panel;
         implementCampus = new PlaceDAO();
         list = implementCampus.getAllCampus();
 
     }
+     
     public void reset() {
         panel.getTxtId().setText("");
         panel.getTxtName().setText("");

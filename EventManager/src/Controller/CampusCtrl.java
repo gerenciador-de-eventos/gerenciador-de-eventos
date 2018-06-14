@@ -11,6 +11,7 @@ import model.Campus;
 import model.DAO.CampusDAO;
 import model.Interfaces.ImplemetsCampus;
 import model.Table.TableModelCampus;
+import view.CampusJframe;
 import view.CampusPanelForm;
 
 /**
@@ -19,11 +20,11 @@ import view.CampusPanelForm;
  */
 public class CampusCtrl {
 
-    private final CampusPanelForm panel;
+    private final CampusJframe panel;
     private final ImplemetsCampus implementCampus;
     private List<Campus> list;
 
-    public CampusCtrl(CampusPanelForm panel) {
+    public CampusCtrl(CampusJframe panel) {
         this.panel = panel;
         implementCampus = new CampusDAO();
         list = implementCampus.getAllCampus();

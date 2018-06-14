@@ -29,19 +29,19 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author MAGNO
  */
 @Entity
-@Table(name = "person", catalog = "event_manager", schema = "")
+@Table(name = "person")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p"),
-    @NamedQuery(name = "Person.findByIdPerson", query = "SELECT p FROM Person p WHERE p.idPerson = :idPerson"),
-    @NamedQuery(name = "Person.findByPersonName", query = "SELECT p FROM Person p WHERE p.personName = :personName"),
-    @NamedQuery(name = "Person.findByPersonRG", query = "SELECT p FROM Person p WHERE p.personRG = :personRG"),
-    @NamedQuery(name = "Person.findByPersonCPF", query = "SELECT p FROM Person p WHERE p.personCPF = :personCPF"),
-    @NamedQuery(name = "Person.findByPersonDateBorn", query = "SELECT p FROM Person p WHERE p.personDateBorn = :personDateBorn"),
-    @NamedQuery(name = "Person.findByPersonPrivileges", query = "SELECT p FROM Person p WHERE p.personPrivileges = :personPrivileges"),
-    @NamedQuery(name = "Person.findByPersonHourWork", query = "SELECT p FROM Person p WHERE p.personHourWork = :personHourWork"),
-    @NamedQuery(name = "Person.findByPersonEmail", query = "SELECT p FROM Person p WHERE p.personEmail = :personEmail"),
-    @NamedQuery(name = "Person.findByPersonPassword", query = "SELECT p FROM Person p WHERE p.personPassword = :personPassword")})
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
+    , @NamedQuery(name = "Person.findByIdPerson", query = "SELECT p FROM Person p WHERE p.idPerson = :idPerson")
+    , @NamedQuery(name = "Person.findByPersonName", query = "SELECT p FROM Person p WHERE p.personName = :personName")
+    , @NamedQuery(name = "Person.findByPersonRG", query = "SELECT p FROM Person p WHERE p.personRG = :personRG")
+    , @NamedQuery(name = "Person.findByPersonCPF", query = "SELECT p FROM Person p WHERE p.personCPF = :personCPF")
+    , @NamedQuery(name = "Person.findByPersonDateBorn", query = "SELECT p FROM Person p WHERE p.personDateBorn = :personDateBorn")
+    , @NamedQuery(name = "Person.findByPersonPrivileges", query = "SELECT p FROM Person p WHERE p.personPrivileges = :personPrivileges")
+    , @NamedQuery(name = "Person.findByPersonHourWork", query = "SELECT p FROM Person p WHERE p.personHourWork = :personHourWork")
+    , @NamedQuery(name = "Person.findByPersonEmail", query = "SELECT p FROM Person p WHERE p.personEmail = :personEmail")
+    , @NamedQuery(name = "Person.findByPersonPassword", query = "SELECT p FROM Person p WHERE p.personPassword = :personPassword")})
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,7 +60,7 @@ public class Person implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date personDateBorn;
     @Column(name = "PersonPrivileges")
-    private Short personPrivileges;
+    private Boolean personPrivileges;
     @Column(name = "PersonHourWork")
     private String personHourWork;
     @Basic(optional = false)
@@ -125,11 +125,11 @@ public class Person implements Serializable {
         this.personDateBorn = personDateBorn;
     }
 
-    public Short getPersonPrivileges() {
+    public Boolean getPersonPrivileges() {
         return personPrivileges;
     }
 
-    public void setPersonPrivileges(Short personPrivileges) {
+    public void setPersonPrivileges(Boolean personPrivileges) {
         this.personPrivileges = personPrivileges;
     }
 
@@ -190,5 +190,5 @@ public class Person implements Serializable {
     public String toString() {
         return "model.Person[ idPerson=" + idPerson + " ]";
     }
-
+    
 }

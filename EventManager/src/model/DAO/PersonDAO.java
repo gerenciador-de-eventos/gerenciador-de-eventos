@@ -29,6 +29,12 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
         mapObj.put("PersonPassword", person.getPersonPassword());
         mapObj.put("PersonCPF", person.getPersonCPF());
 
+        mapObj.put("PersonRG", person.getPersonRG());
+        mapObj.put("PersonDateBorn", person.getPersonDateBorn());
+        mapObj.put("PersonPrivileges", person.getPersonPrivileges());
+        mapObj.put("PersonHourWork", person.getPersonHourWork());
+        mapObj.put("PersonEmail", person.getPersonEmail());
+
         this.genericInsert(mapObj);
     }
 
@@ -40,6 +46,12 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
         mapObj.put("PersonName", person.getPersonName());
         mapObj.put("PersonPassword", person.getPersonPassword());
         mapObj.put("PersonCPF", person.getPersonCPF());
+
+        mapObj.put("PersonRG", person.getPersonRG());
+        mapObj.put("PersonDateBorn", person.getPersonDateBorn());
+        mapObj.put("PersonPrivileges", person.getPersonPrivileges());
+        mapObj.put("PersonHourWork", person.getPersonHourWork());
+        mapObj.put("PersonEmail", person.getPersonEmail());
 
         this.genericUpdate(mapObj, mapConditions);
     }
@@ -62,6 +74,13 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
                 p.setPersonName(rs.getString("PersonName"));
                 p.setPersonPassword(rs.getString("PersonPassword"));
                 p.setPersonCPF(rs.getString("PersonCPF"));
+
+                p.setPersonRG(rs.getString("PersonRG"));
+                p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
+                p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
+                p.setPersonHourWork(rs.getString("PersonHourWork"));
+                p.setPersonEmail(rs.getString("PersonEmail"));
+
                 list.add(p);
             }
             return list;
@@ -82,6 +101,12 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
                 p.setPersonName(rs.getString("PersonName"));
                 p.setPersonPassword(rs.getString("PersonPassword"));
                 p.setPersonCPF(rs.getString("PersonCPF"));
+
+                p.setPersonRG(rs.getString("PersonRG"));
+                p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
+                p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
+                p.setPersonHourWork(rs.getString("PersonHourWork"));
+                p.setPersonEmail(rs.getString("PersonEmail"));
                 list.add(p);
 
             }
@@ -101,9 +126,36 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
             p.setPersonName(rs.getString("PersonName"));
             p.setPersonPassword(rs.getString("PersonPassword"));
             p.setPersonCPF(rs.getString("PersonCPF"));
+
+            p.setPersonRG(rs.getString("PersonRG"));
+            p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
+            p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
+            p.setPersonHourWork(rs.getString("PersonHourWork"));
+            p.setPersonEmail(rs.getString("PersonEmail"));
             return p;
         } catch (SQLException ex) {
             System.out.println("Erro ao retornar uma pessoa pelo id: " + ex.getMessage());
+        }
+        return null;
+    }
+    public Person login(String email, String senha)
+    {
+        ResultSet rs = this.getUser(email, senha);
+        Person p = new Person();
+        try {
+            p.setIdPerson(rs.getInt(1));
+            p.setPersonName(rs.getString("PersonName"));
+            p.setPersonPassword(rs.getString("PersonPassword"));
+            p.setPersonCPF(rs.getString("PersonCPF"));
+
+            p.setPersonRG(rs.getString("PersonRG"));
+            p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
+            p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
+            p.setPersonHourWork(rs.getString("PersonHourWork"));
+            p.setPersonEmail(rs.getString("PersonEmail"));
+            return p;
+        } catch (SQLException ex) {
+            System.out.println("Erro ao retornar uma pessoa pelo senha e usuario: " + ex.getMessage());
         }
         return null;
     }

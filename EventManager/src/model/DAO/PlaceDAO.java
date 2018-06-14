@@ -25,7 +25,7 @@ public class PlaceDAO extends DatabaseGeneric implements ImplemetsPlace {
     public ArrayList<Place> list;
 
     public PlaceDAO() {
-        super(new ConfigurationsMySQL(), "Place");
+        super(new ConfigurationsMySQL(), "place");
     }
 
     @Override

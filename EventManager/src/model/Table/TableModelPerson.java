@@ -31,7 +31,7 @@ public class TableModelPerson extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 8;
     }
 
     @Override
@@ -42,11 +42,17 @@ public class TableModelPerson extends AbstractTableModel {
             case 1:
                 return list.get(rowIndex).getPersonName();
             case 2:
-                return list.get(rowIndex).getPersonPassword();
-
+                return list.get(rowIndex).getPersonEmail();
             case 3:
-
                 return list.get(rowIndex).getPersonCPF();
+            case 4:
+                return list.get(rowIndex).getPersonRG();
+            case 5:
+                return list.get(rowIndex).getPersonDateBorn();
+            case 6:
+                return list.get(rowIndex).getPersonHourWork();
+            case 7:
+                return list.get(rowIndex).getPersonPrivileges();
 
             default:
                 return null;
@@ -61,9 +67,17 @@ public class TableModelPerson extends AbstractTableModel {
             case 1:
                 return "Name";
             case 2:
-                return "Password";
+                return "Email";
             case 3:
                 return "CPF";
+            case 4:
+                return "RG";
+            case 5:
+                return "Date of birh";
+            case 6:
+                return "Hour work";
+            case 7:
+                return "Admin";
 
             default:
                 return null;

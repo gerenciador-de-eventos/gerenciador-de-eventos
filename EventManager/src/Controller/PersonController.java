@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Campus;
@@ -14,6 +15,7 @@ import model.Interfaces.ImplemetsPerson;
 import model.Person;
 import model.Table.TableModelCampus;
 import model.Table.TableModelPerson;
+import view.PersonJframe;
 import view.PersonPanelForm;
 
 /**
@@ -22,11 +24,11 @@ import view.PersonPanelForm;
  */
 public class PersonController {
 
-    private final PersonPanelForm panel;
+    private final PersonJframe panel;
     private final ImplemetsPerson implementPerson;
     private List<Person> list;
 
-    public PersonController(PersonPanelForm panel) {
+    public PersonController(PersonJframe panel) {
         this.panel = panel;
         implementPerson = new PersonDAO();
         list = implementPerson.getAllPerson();
@@ -38,10 +40,16 @@ public class PersonController {
         panel.getTxtCPF().setText("");
         panel.getTxtPassword().setText("");
 
+        panel.getTxtRG().setText("");
+        panel.getjDateChooserDateBirth().setCalendar(Calendar.getInstance());
+        panel.getjCheckBoxPrivileges().setSelected(false);
+        panel.getjComboBoxHourWork().setSelectedIndex(0); //
+        panel.getTxtEmail().setText("");
+
         panel.getTablePerson().clearSelection();
     }
 
-    public void setTabel() {
+    public void setTable() {
         list = implementPerson.getAllPerson();
         panel.getTablePerson().setModel(new TableModelPerson(list));
     }
@@ -54,6 +62,13 @@ public class PersonController {
             panel.getTxtPassword().setText(list.get(row).getPersonPassword());
             panel.getTxtCPF().setText(list.get(row).getPersonCPF());
 
+            panel.getTxtRG().setText(list.get(row).getPersonRG());
+            panel.getjDateChooserDateBirth().setDate(list.get(row).getPersonDateBorn());
+            panel.getTxtEmail().setText(list.get(row).getPersonEmail());
+
+            panel.getjCheckBoxPrivileges().setSelected(list.get(row).getPersonPrivileges());
+            panel.getjComboBoxHourWork().setSelectedItem(list.get(row).getPersonHourWork());
+
         }
     }
 
@@ -62,6 +77,11 @@ public class PersonController {
         person.setPersonName(panel.getTxtName().getText());
         person.setPersonPassword(panel.getTxtPassword().getText());
         person.setPersonCPF(panel.getTxtCPF().getText());
+        person.setPersonRG(panel.getTxtRG().getText());
+        person.setPersonDateBorn(panel.getjDateChooserDateBirth().getDate());
+        person.setPersonPrivileges(panel.getjCheckBoxPrivileges().isSelected());
+        person.setPersonHourWork(panel.getjComboBoxHourWork().getSelectedItem().toString());
+        person.setPersonEmail(panel.getTxtEmail().getText());
 
         implementPerson.insert(person);
     }
@@ -76,6 +96,12 @@ public class PersonController {
         person.setPersonName(panel.getTxtName().getText());
         person.setPersonPassword(panel.getTxtPassword().getText());
         person.setPersonCPF(panel.getTxtCPF().getText());
+        person.setPersonRG(panel.getTxtRG().getText());
+        person.setPersonDateBorn(panel.getjDateChooserDateBirth().getDate());
+        person.setPersonPrivileges(panel.getjCheckBoxPrivileges().isSelected());
+        person.setPersonHourWork(panel.getjComboBoxHourWork().getSelectedItem().toString());
+        person.setPersonEmail(panel.getTxtEmail().getText());
+
         implementPerson.update(person);
     }
 

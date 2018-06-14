@@ -9,6 +9,13 @@
     <class>model.Place</class>
     <class>model.Event</class>
     <class>model.Type</class>
+    <class>Configurations.Eventequipament</class>
+    <class>Configurations.Type</class>
+    <class>Configurations.Equipaments</class>
+    <class>Configurations.Person</class>
+    <class>Configurations.Place</class>
+    <class>Configurations.Event</class>
+    <class>Configurations.Campus</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/event_manager?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

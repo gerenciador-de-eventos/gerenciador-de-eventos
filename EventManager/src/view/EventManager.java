@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -19,75 +21,39 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import model.Person;
 
 /**
  *
  * @author MAGNO
  */
-public class EventManager extends javax.swing.JFrame implements ActionListener {
+public class EventManager extends javax.swing.JFrame {
 
     /**
-     * Creates new form EventManager
+     * Creates lista de frames internos do apricativos, que seram chamdos dentro
+     * do desktop
      */
-    JDesktopPane desktop;
+    private PlaceJFrame frmPlace;
+    private CampusJframe frmCampus;
+    private PersonJframe frmPersonJframe;
+    private EquipamentPanelForm frmEquipamentPanelForm;
+    private final Person person;
 
-    public EventManager() {
-        super("InternalFrame");
-//Make the big window be indented 50 pixels from each edge
+    public EventManager(Person p) {
+        super("Agenda de Eventos - Programação Desktop - UTFPR-CP -  professor: Diogo Cezar");
+        //Make the big window be indented 50 pixels from each edge
         //of the screen.
-        int inset = 50;
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(inset, inset,
-                screenSize.width - inset * 2,
-                screenSize.height - inset * 2);
+        this.person = p;
+        setExtendedState(MAXIMIZED_BOTH);
 
-        //Set up the GUI.
-        desktop = new JDesktopPane(); //a specialized layered pane
-        createFrame(); //create first "window"
-        setContentPane(desktop);
-        setJMenuBar(createMenuBar());
-
-        //Make dragging a little faster but perhaps uglier.
-        desktop.setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
         initComponents();
-    }
 
-    protected JMenuBar createMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
+//      dpnCorpo.add(frmFornecedor = new FrmPainelControle(this));
+        desktop.add(frmPlace = new PlaceJFrame(this));
+        desktop.add(frmCampus = new CampusJframe(this));
+        desktop.add(frmPersonJframe = new PersonJframe(this));
+        desktop.add(frmEquipamentPanelForm = new EquipamentPanelForm(this));
 
-        //Set up the lone menu.
-        JMenu menu = new JMenu("Document");
-        menu.setMnemonic(KeyEvent.VK_D);
-        menuBar.add(menu);
-
-        //Set up the first menu item.
-        JMenuItem menuItem = new JMenuItem("New");
-        menuItem.setMnemonic(KeyEvent.VK_N);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_N, ActionEvent.ALT_MASK));
-        menuItem.setActionCommand("new");
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        //Set up the second menu item.
-        menuItem = new JMenuItem("Quit");
-        menuItem.setMnemonic(KeyEvent.VK_Q);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_Q, ActionEvent.ALT_MASK));
-        menuItem.setActionCommand("quit");
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        return menuBar;
-    }
-
-    private static void createAndShowGUI() {
-
-        JFrame.setDefaultLookAndFeelDecorated(true);
-
-        EventManager frame = new EventManager();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 
     /**
@@ -101,6 +67,8 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        desktop = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuPerson = new javax.swing.JMenuItem();
@@ -119,6 +87,27 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_Primary_logo_on_transparent_159x73.png"))); // NOI18N
+
+        desktop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addContainerGap(240, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addContainerGap(210, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
 
         jMenu1.setText("Admin");
 
@@ -155,6 +144,11 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_phonelink_black_18dp.png"))); // NOI18N
         jMenuItem3.setText("Equipaments");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -205,11 +199,17 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktop)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktop)
+                .addContainerGap())
         );
 
         pack();
@@ -217,16 +217,28 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
 
     private void menuPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPersonActionPerformed
         // TODO add your handling code here:
+        if (!frmPersonJframe.isVisible()) {
+            LimparDesktop();
+            frmPersonJframe.setVisible(true);
 
+        }
     }//GEN-LAST:event_menuPersonActionPerformed
 
     private void menuPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPlaceActionPerformed
         //place 
+        if (!frmPlace.isVisible()) {
+            LimparDesktop();
+            frmPlace.setVisible(true);
 
+        }
     }//GEN-LAST:event_menuPlaceActionPerformed
 
     private void menuCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCampusActionPerformed
         // TODO add your handling code here:
+        if (!frmCampus.isVisible()) {
+            LimparDesktop();
+            frmCampus.setVisible(true);
+        }
     }//GEN-LAST:event_menuCampusActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -241,6 +253,14 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // Equipament 
+         if (!frmEquipamentPanelForm.isVisible()) {
+            LimparDesktop();
+            frmEquipamentPanelForm.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,14 +291,17 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private Person person;
             public void run() {
-//                new EventManager().setVisible(true);
-                createAndShowGUI();
+                new EventManager(this.person).setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane desktop;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -295,28 +318,13 @@ public class EventManager extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuItem menuPlace;
     // End of variables declaration//GEN-END:variables
  //Create a new internal frame.
-    protected void createFrame() {
-        PlacePanelForm frame = new PlacePanelForm();
-        frame.setVisible(true); //necessary as of 1.3
-        desktop.add(frame);
-        try {
-            frame.setSelected(true);
-        } catch (java.beans.PropertyVetoException e) {
-        }
-    }
 
     //Quit the application.
-    protected void quit() {
-        System.exit(0);
-    }
+    public final void LimparDesktop() {
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if ("new".equals(e.getActionCommand())) { //new
-            createFrame();
-        } else { //quit
-            quit();
-        }
+        frmPlace.setVisible(false);
+        frmCampus.setVisible(false);
+        frmPersonJframe.setVisible(false);
+        frmEquipamentPanelForm.setVisible(false);
     }
-
 }
