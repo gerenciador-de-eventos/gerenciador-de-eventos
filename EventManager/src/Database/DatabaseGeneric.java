@@ -46,13 +46,13 @@ public class DatabaseGeneric extends Database {
         }
         return this.query("SELECT * FROM " + this.table + " WHERE id = ?", id);
     }
-    public ResultSet getUser(String email, String senha)
+    public ResultSet getUser(String email)
     {
         this.checkConnection();
         if (!this.checkEmptyTable()) {
             return null;
         }
-        return this.query("SELECT * FROM " + this.table + " WHERE PersonEmail = "+ email +  "END PersonPassword =" +  senha);
+        return this.query("SELECT * FROM " + this.table + " WHERE PersonEmail = "+ email);
     }
 
     public ResultSet getAll() {

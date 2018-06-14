@@ -306,6 +306,7 @@ public class EquipamentPanelForm extends javax.swing.JInternalFrame {
     }
 
     public Type getjComboBoxType() {
+       
         
         Type tipo;
         tipo = new Type();

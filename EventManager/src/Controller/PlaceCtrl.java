@@ -12,7 +12,7 @@ import model.Interfaces.ImplemetsPlace;
 import model.Place;
 import model.Table.TableModelPlace;
 import view.PlaceJFrame;
-import view.PlacePanelForm;
+
 
 /**
  *

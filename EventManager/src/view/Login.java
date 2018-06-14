@@ -19,8 +19,16 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     private final LoginCtrl controller;
+    private EventManager viewPrincipal;
 
     public Login() {
+        initComponents();
+        controller = new LoginCtrl();
+    }
+
+    public Login(EventManager aThis) {
+        setRootPaneCheckingEnabled(false);
+        this.viewPrincipal = viewPrincipal;
         initComponents();
         controller = new LoginCtrl();
     }
@@ -131,11 +139,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         Person p = new Person();
         p = controller.loginPerson(txtEmail.getText(), txtSenha.getText());
-        if(p != null)
-        {
+        if (p != null) {
+
 //            abrirTelaPrincipal(p);
-        }
-        else{
+        } else {
             JOptionPane.showConfirmDialog(rootPane, "Senha errada");
         }
     }//GEN-LAST:event_jButton1ActionPerformed

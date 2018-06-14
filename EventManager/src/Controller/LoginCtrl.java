@@ -22,7 +22,7 @@ public class LoginCtrl {
     {
         dao = new PersonDAO();
         p = new Person();
-        p = dao.login(email, senha);
+        p = dao.login(email);
         return p;
                 
         

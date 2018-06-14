@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import model.Campus;
 import model.Interfaces.ImplemetsCampus;
 import model.Interfaces.ImplemetsPerson;
@@ -138,9 +139,9 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
         }
         return null;
     }
-    public Person login(String email, String senha)
+    public Person login(String email)
     {
-        ResultSet rs = this.getUser(email, senha);
+        ResultSet rs = this.getUser(email);
         Person p = new Person();
         try {
             p.setIdPerson(rs.getInt(1));
@@ -155,7 +156,8 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
             p.setPersonEmail(rs.getString("PersonEmail"));
             return p;
         } catch (SQLException ex) {
-            System.out.println("Erro ao retornar uma pessoa pelo senha e usuario: " + ex.getMessage());
+            System.out.println("Erro ao retornar uma pessoa pelo usuario: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex);
         }
         return null;
     }

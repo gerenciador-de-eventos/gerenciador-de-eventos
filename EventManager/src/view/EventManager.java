@@ -37,6 +37,8 @@ public class EventManager extends javax.swing.JFrame {
     private CampusJframe frmCampus;
     private PersonJframe frmPersonJframe;
     private EquipamentPanelForm frmEquipamentPanelForm;
+    private Login frmLogin;
+    private Person p;
 
 
     public EventManager() {
@@ -53,6 +55,9 @@ public class EventManager extends javax.swing.JFrame {
         desktop.add(frmCampus = new CampusJframe(this));
         desktop.add(frmPersonJframe = new PersonJframe(this));
         desktop.add(frmEquipamentPanelForm = new EquipamentPanelForm(this));
+        desktop.add(frmLogin = new Login(this));
+        frmLogin.setVisible(true);
+        
 
     }
 
@@ -326,5 +331,6 @@ public class EventManager extends javax.swing.JFrame {
         frmCampus.setVisible(false);
         frmPersonJframe.setVisible(false);
         frmEquipamentPanelForm.setVisible(false);
+        frmLogin.setVisible(false);
     }
 }

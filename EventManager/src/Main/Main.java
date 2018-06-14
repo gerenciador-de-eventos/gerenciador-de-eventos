@@ -1,26 +1,14 @@
 package Main;
 
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
-import view.CampusPanelForm;
 import view.EventManager;
-import view.Login;
-import view.PersonPanelForm;
-import view.PlacePanelForm;
+
 
 public class Main  {
 
     public static void main(String args[]) {
-   
-    EventManager e = new EventManager();    
-    e.setVisible(true);;
-//      
-//com login 
-//
-//        Login l = new Login();
-//        l.setVisible(true);
-//        
         
+        EventManager e = new EventManager();
+        e.setVisible(true);
+      
     }
 }
