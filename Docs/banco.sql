@@ -5,22 +5,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema event_manager
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema event_manager
 -- -----------------------------------------------------
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `event_manager` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema event_manager
+-- -----------------------------------------------------
+USE `event_manager` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Place`
+-- Table `event_manager`.`Place`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Place` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Place` (
   `idPlace` INT NOT NULL AUTO_INCREMENT,
   `PlaceName` VARCHAR(100) NOT NULL,
   `PlaceCampus` VARCHAR(100) NOT NULL,
@@ -29,9 +29,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Person`
+-- Table `event_manager`.`Person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Person` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Person` (
   `idPerson` INT NOT NULL AUTO_INCREMENT,
   `PersonName` VARCHAR(100) NULL,
   `PersonRG` VARCHAR(20) NULL,
@@ -52,9 +52,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Campus`
+-- Table `event_manager`.`Campus`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Campus` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Campus` (
   `idCampus` INT NOT NULL AUTO_INCREMENT,
   `CampusName` VARCHAR(100) NOT NULL,
   `CampusCity` VARCHAR(100) NOT NULL,
@@ -64,9 +64,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Event`
+-- Table `event_manager`.`Event`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Event` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Event` (
   `idEvent` INT NOT NULL AUTO_INCREMENT,
   `EventName` VARCHAR(100) NOT NULL,
   `EventDate` DATE NOT NULL,
@@ -84,26 +84,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Event` (
   INDEX `fk_Event_Campus1_idx` (`Campus_idCampus` ASC),
   CONSTRAINT `fk_Event_Class1`
     FOREIGN KEY (`Class_idClass`)
-    REFERENCES `mydb`.`Place` (`idPlace`)
+    REFERENCES `event_manager`.`Place` (`idPlace`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Event_Person1`
     FOREIGN KEY (`Person_idPerson`)
-    REFERENCES `mydb`.`Person` (`idPerson`)
+    REFERENCES `event_manager`.`Person` (`idPerson`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Event_Campus1`
     FOREIGN KEY (`Campus_idCampus`)
-    REFERENCES `mydb`.`Campus` (`idCampus`)
+    REFERENCES `event_manager`.`Campus` (`idCampus`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Type`
+-- Table `event_manager`.`Type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Type` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Type` (
   `idType` INT NOT NULL,
   `TypeName` VARCHAR(45) NULL,
   PRIMARY KEY (`idType`))
@@ -111,9 +111,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Equipaments`
+-- Table `event_manager`.`Equipaments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Equipaments` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`Equipaments` (
   `idEquipaments` INT NOT NULL AUTO_INCREMENT,
   `EquipamentsName` VARCHAR(200) NOT NULL,
   `EquipamentsType` INT NOT NULL,
@@ -121,16 +121,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Equipaments` (
   INDEX `typefk_idx` (`EquipamentsType` ASC),
   CONSTRAINT `typefk`
     FOREIGN KEY (`EquipamentsType`)
-    REFERENCES `mydb`.`Type` (`idType`)
+    REFERENCES `event_manager`.`Type` (`idType`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`EventEquipament`
+-- Table `event_manager`.`EventEquipament`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`EventEquipament` (
+CREATE TABLE IF NOT EXISTS `event_manager`.`EventEquipament` (
   `idEventEquipament` INT NOT NULL,
   `idEvent` INT NULL,
   `idEquipament` INT NULL,
@@ -139,12 +139,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`EventEquipament` (
   INDEX `equipFk_idx` (`idEquipament` ASC),
   CONSTRAINT `equipFk`
     FOREIGN KEY (`idEquipament`)
-    REFERENCES `mydb`.`Equipaments` (`idEquipaments`)
+    REFERENCES `event_manager`.`Equipaments` (`idEquipaments`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `eventoFk`
     FOREIGN KEY (`idEvent`)
-    REFERENCES `mydb`.`Event` (`idEvent`)
+    REFERENCES `event_manager`.`Event` (`idEvent`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
