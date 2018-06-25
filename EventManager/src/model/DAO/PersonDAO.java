@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
-import model.Campus;
-import model.Interfaces.ImplemetsCampus;
 import model.Interfaces.ImplemetsPerson;
 import model.Person;
 
@@ -123,11 +120,10 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
         ResultSet rs = this.getOne(id);
         Person p = new Person();
         try {
-            p.setIdPerson(rs.getInt(1));
+            p.setIdPerson(rs.getInt("idPerson"));
             p.setPersonName(rs.getString("PersonName"));
             p.setPersonPassword(rs.getString("PersonPassword"));
             p.setPersonCPF(rs.getString("PersonCPF"));
-
             p.setPersonRG(rs.getString("PersonRG"));
             p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
             p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
@@ -139,25 +135,28 @@ public class PersonDAO extends DatabaseGeneric implements ImplemetsPerson {
         }
         return null;
     }
-    public Person login(String email)
-    {
-        ResultSet rs = this.getUser(email);
-        Person p = new Person();
-        try {
-            p.setIdPerson(rs.getInt(1));
-            p.setPersonName(rs.getString("PersonName"));
-            p.setPersonPassword(rs.getString("PersonPassword"));
-            p.setPersonCPF(rs.getString("PersonCPF"));
 
-            p.setPersonRG(rs.getString("PersonRG"));
-            p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
-            p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
-            p.setPersonHourWork(rs.getString("PersonHourWork"));
-            p.setPersonEmail(rs.getString("PersonEmail"));
-            return p;
+    public Person login(String email) {
+        this.list = new ArrayList<>();
+        try {
+            ResultSet rs = this.getLike("PersonEmail", email);
+            while (rs.next()) {
+                Person p = new Person();
+                p.setIdPerson(rs.getInt("IdPerson"));
+                p.setPersonName(rs.getString("PersonName"));
+                p.setPersonPassword(rs.getString("PersonPassword"));
+                p.setPersonCPF(rs.getString("PersonCPF"));
+
+                p.setPersonRG(rs.getString("PersonRG"));
+                p.setPersonDateBorn(rs.getDate("PersonDateBorn"));
+                p.setPersonPrivileges(rs.getBoolean("PersonPrivileges"));
+                p.setPersonHourWork(rs.getString("PersonHourWork"));
+                p.setPersonEmail(rs.getString("PersonEmail"));
+
+                return p;
+            }
         } catch (SQLException ex) {
-            System.out.println("Erro ao retornar uma pessoa pelo usuario: " + ex.getMessage());
-            JOptionPane.showMessageDialog(null, ex);
+            System.out.println("Houve um erro ao obter uma pessoa: \n\n\n\n" + ex.getMessage());
         }
         return null;
     }

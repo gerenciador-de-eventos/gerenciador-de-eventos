@@ -29,6 +29,9 @@ public class DatabaseGeneric extends Database {
         if (!this.connected) {
             this.connect();
         }
+        else{
+            System.err.println("Erro ao acessar o banco de dados");
+        }
     }
 
     public Boolean checkEmptyTable() {
@@ -52,7 +55,7 @@ public class DatabaseGeneric extends Database {
         if (!this.checkEmptyTable()) {
             return null;
         }
-        return this.query("SELECT * FROM " + this.table + " WHERE PersonEmail = "+ email);
+        return this.query("SELECT *  FROM " + this.table + " WHERE  PersonEmail LIKE '" + email + "%'");
     }
 
     public ResultSet getAll() {
@@ -68,7 +71,7 @@ public class DatabaseGeneric extends Database {
         if (!this.checkEmptyTable()) {
             return null;
         }
-        return this.query("SELECT * FROM " + this.table + " WHERE " + field + " LIKE '%" + value + "%'");
+        return this.query("SELECT * FROM " + this.table + " WHERE " + field + " LIKE '" + value + "'");
     }
 
     public void genericInsert(Map<Object, Object> mapObj) {

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+
 import model.DAO.PersonDAO;
 import model.Person;
 
@@ -23,9 +24,27 @@ public class LoginCtrl {
         dao = new PersonDAO();
         p = new Person();
         p = dao.login(email);
-        return p;
-                
-        
+        if(p == null)
+        {
+            System.out.println("nulo no ctrl");
+            return null;
+        }
+        else
+        {
+            if(senha.equals(p.getPersonPassword()))
+            {
+                System.out.println(p.getPersonPassword());
+                System.out.println(senha);
+                System.out.println("person deu boom");
+                return p;
+            }
+            else
+            {
+                System.out.println(p.getPersonPassword());
+                System.out.println("senha errada");
+                return null;
+            }
+        }       
     }
     
 }

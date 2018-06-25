@@ -72,7 +72,7 @@ public class EquipamentController {
         equipaments.setIdEquipaments(Integer.parseInt(panel.getTxtId().getText()));
 
         equipaments.setEquipamentsName(panel.getTxtName().getText());
-//        equipaments.setEquipamentsType(panel.getjComboBoxType().getSelectedItem().toString());
+//        equipaments.setEquipamentsType(panel.getjComboBoxType().getIdType());
 
         //  equipaments.setEquipamentsType(panel.getjComboBoxType().getSelectedItem().toString());
         implementsEquipament.update(equipaments);

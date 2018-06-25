@@ -13,7 +13,7 @@ import model.Person;
  *
  * @author MAGNO
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Login
@@ -133,18 +133,27 @@ public class Login extends javax.swing.JFrame {
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Person p = new Person();
+      
+        Person p = new Person();        
         p = controller.loginPerson(txtEmail.getText(), txtSenha.getText());
-        if (p != null) {
-
-//            abrirTelaPrincipal(p);
-        } else {
-            JOptionPane.showConfirmDialog(rootPane, "Senha errada");
+        System.out.println(p.toString() + "Login p");
+        if(p != null)
+        {
+           
+//            
+//            EventManager e = new EventManager(p);
+//            e.setVisible(true);
+//            this.setVisible(false);;
+        }  
+        else 
+        {
+            JOptionPane.showMessageDialog(rootPane, "Senha ou Email digitado esta errado Errada");
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
