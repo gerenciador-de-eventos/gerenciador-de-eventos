@@ -16,7 +16,7 @@ import view.PlaceJFrame;
 
 /**
  *
- * @author MAGNO
+ * @author kamilla
  */
 public class PlaceCtrl {
 
@@ -37,7 +37,7 @@ public class PlaceCtrl {
     public void reset() {
         panel.getTxtId().setText("");
         panel.getTxtName().setText("");
-        panel.getTxtLocal().setText("");
+        panel.getCbCampus().setSelectedIndex(0);
        
 
         panel.getTablePlace().clearSelection();
@@ -53,13 +53,13 @@ public class PlaceCtrl {
         if (row != -1) {
             panel.getTxtId().setText(String.valueOf(list.get(row).getIdPlace()));
             panel.getTxtName().setText(list.get(row).getPlaceName());
-            panel.getTxtLocal().setText(list.get(row).getPlaceName());
+            panel.getCbCampus().setName(list.get(row).getPlaceName());
         }
     }
     public void insert() {
         Place course = new Place();
         course.setPlaceName(panel.getTxtName().getText());
-        course.setPlaceCampus(panel.getTxtLocal().getText());
+        course.setPlaceCampus(panel.getCbCampus().getName());
        
 
         implementCampus.insert(course);
@@ -73,7 +73,7 @@ public class PlaceCtrl {
         Place course = new Place();
         course.setIdPlace(Integer.parseInt(panel.getTxtId().getText()));
         course.setPlaceName(panel.getTxtName().getText());
-        course.setPlaceCampus(panel.getTxtLocal().getText());
+        course.setPlaceCampus(panel.getCbCampus().getName());
         
         implementCampus.update(course);
     }
@@ -89,3 +89,4 @@ public class PlaceCtrl {
      
 
 }
+
