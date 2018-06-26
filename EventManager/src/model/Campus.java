@@ -129,9 +129,10 @@ public class Campus implements Serializable {
         return true;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "model.Campus[ idCampus=" + idCampus + " ]";
+        //return "model.Campus[ idCampus=" + idCampus + " ]";
+        return getCampusName();
     }
     
 }
