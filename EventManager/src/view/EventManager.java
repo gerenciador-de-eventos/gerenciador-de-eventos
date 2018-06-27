@@ -37,6 +37,7 @@ public class EventManager extends javax.swing.JFrame {
     private CampusJframe frmCampus;
     private PersonJframe frmPersonJframe;
     private EquipamentPanelForm frmEquipamentPanelForm;
+    private EventJframe frmEventJframe;
 
 
 
@@ -54,6 +55,7 @@ public class EventManager extends javax.swing.JFrame {
         desktop.add(frmCampus = new CampusJframe(this));
         desktop.add(frmPersonJframe = new PersonJframe(this));
         desktop.add(frmEquipamentPanelForm = new EquipamentPanelForm(this));
+       desktop.add(frmEventJframe = new EventJframe(this));
        
         
     }
@@ -78,6 +80,7 @@ public class EventManager extends javax.swing.JFrame {
         menuPlace = new javax.swing.JMenuItem();
         menuCampus = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemEvent = new javax.swing.JMenuItem();
         menuInfos = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -92,25 +95,8 @@ public class EventManager extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_Primary_logo_on_transparent_159x73.png"))); // NOI18N
-
-        desktop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopLayout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopLayout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(222, Short.MAX_VALUE))
-        );
+        desktop.add(jLabel1);
+        jLabel1.setBounds(240, 210, 122, 73);
 
         menuAdmin.setText("Admin");
 
@@ -153,6 +139,14 @@ public class EventManager extends javax.swing.JFrame {
             }
         });
         menuAdmin.add(jMenuItem3);
+
+        jMenuItemEvent.setLabel("Event");
+        jMenuItemEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEventActionPerformed(evt);
+            }
+        });
+        menuAdmin.add(jMenuItemEvent);
 
         jMenuBar1.add(menuAdmin);
 
@@ -265,6 +259,14 @@ public class EventManager extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItemEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEventActionPerformed
+        // TODO add your handling code here:
+          if (!frmEventJframe.isVisible()) {
+            LimparDesktop();
+            frmEventJframe.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItemEventActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,6 +316,7 @@ public class EventManager extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItemEvent;
     private javax.swing.JMenu menuAdmin;
     private javax.swing.JMenuItem menuCampus;
     private javax.swing.JMenu menuInfos;
@@ -329,6 +332,7 @@ public class EventManager extends javax.swing.JFrame {
         frmCampus.setVisible(false);
         frmPersonJframe.setVisible(false);
         frmEquipamentPanelForm.setVisible(false);
+        frmEventJframe.setVisible(false);
 
     }
     public void setPerson()
