@@ -42,7 +42,7 @@ public class TableModelEquipament extends AbstractTableModel {
             case 1:
                 return list.get(rowIndex).getEquipamentsName();
             case 2:
-                return list.get(rowIndex).getEquipamentsType();
+                return list.get(rowIndex).getEquipamentsType().getTypeName();
 
             default:
                 return null;

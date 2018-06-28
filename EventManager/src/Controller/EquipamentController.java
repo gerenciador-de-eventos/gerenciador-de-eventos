@@ -48,7 +48,7 @@ public class EquipamentController {
             panel.getTxtId().setText(String.valueOf(list.get(row).getIdEquipaments()));
             panel.getTxtName().setText(list.get(row).getEquipamentsName());
 
-//            panel.getjComboBoxType().setSelectedItem(list.get(row).getEquipamentsType());
+            panel.getjComboBoxType().setIdType(list.get(row).getIdEquipaments());
 
         }
     }
@@ -57,7 +57,7 @@ public class EquipamentController {
         Equipaments equipaments = new Equipaments();
         equipaments.setEquipamentsName(panel.getTxtName().getText());
 
-//    equipaments.setEquipamentsType(panel.getjComboBoxType().getSelectedItem().toString());
+        equipaments.setEquipamentsType(panel.getjComboBoxType());
 
         implementsEquipament.insert(equipaments);
     }

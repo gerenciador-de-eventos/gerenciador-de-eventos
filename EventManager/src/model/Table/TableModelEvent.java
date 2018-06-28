@@ -47,13 +47,13 @@ public class TableModelEvent extends AbstractTableModel {
             case 4:
                 return list.get(rowIndex).getEventCampus();
             case 5:
-              // return list.get(rowIndex).getEventPlaces();
+//               return list.get(rowIndex).getEventPlaces();
             //add eventPlaces
             case 6:
                 return list.get(rowIndex).getEventequipamentCollection();
                 //acho que nao vai funcionar
             case 7:
-         //   return list.get(rowIndex).getEventequipamentCollection();
+         //   return list.get(rowIndex).getEventequipamentCollection();;
                 case 8:
               // return list.get(rowIndex).getEventequipamentCollection();
                  case 9:

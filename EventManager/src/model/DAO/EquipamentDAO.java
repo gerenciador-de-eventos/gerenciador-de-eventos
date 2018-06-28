@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import model.Equipaments;
 import model.Person;
+import model.Type;
 
 /**
  *
@@ -34,7 +35,7 @@ public class EquipamentDAO extends DatabaseGeneric implements ImplementsEquipame
         Map<Object, Object> mapObj = new HashMap<>();
 
         mapObj.put("EquipamentsName", equipaments.getEquipamentsName());
-        mapObj.put("EquipamentsType", equipaments.getEquipamentsType());
+        mapObj.put("EquipamentsType", equipaments.getEquipamentsType().getIdType());
         // mapObj.put("idEquipament", equipaments.getEventequipamentCollection());
         //    mapObj.put("idEquipaments", equipaments.getIdEquipaments());
 
@@ -47,7 +48,7 @@ public class EquipamentDAO extends DatabaseGeneric implements ImplementsEquipame
         Map<Object, Object> mapConditions = new HashMap<>();
         mapConditions.put("idEquipaments", equipaments.getIdEquipaments());
         mapObj.put("EquipamentsName", equipaments.getEquipamentsName());
-        mapObj.put("EquipamentsType", equipaments.getEquipamentsType());
+        mapObj.put("EquipamentsType", equipaments.getEquipamentsType().getIdType());
         //      mapObj.put("idEquipament", equipaments.getEventequipamentCollection());
 
         this.genericUpdate(mapObj, mapConditions);
@@ -69,7 +70,9 @@ public class EquipamentDAO extends DatabaseGeneric implements ImplementsEquipame
                 Equipaments eq = new Equipaments();
                 eq.setIdEquipaments(rs.getInt(1));
                 eq.setEquipamentsName(rs.getString("EquipamentsName"));
-//                eq.setEquipamentsType();
+                Type t = new Type();
+                t.setIdType(rs.getInt("EquipamentsType"));
+                eq.setEquipamentsType(t);
 
                 list.add(eq);
             }
@@ -89,7 +92,9 @@ public class EquipamentDAO extends DatabaseGeneric implements ImplementsEquipame
                 Equipaments eq = new Equipaments();
                 eq.setIdEquipaments(rs.getInt("idEquipaments"));
                 eq.setEquipamentsName(rs.getString("EquipamentsName"));
-//               eq.setEquipamentsType(rs.getString("EquipamentsType"));
+                Type t = new Type();
+                t.setIdType(rs.getInt("EquipamentsType"));
+                eq.setEquipamentsType(t);
 
                 list.add(eq);
 
@@ -108,7 +113,9 @@ public class EquipamentDAO extends DatabaseGeneric implements ImplementsEquipame
         try {
             eq.setIdEquipaments(rs.getInt(1));
             eq.setEquipamentsName(rs.getString("EquipamentsName"));
-//            eq.setEquipamentsType(rs.getString("EquipamentsType"));
+           Type t = new Type();
+                t.setIdType(rs.getInt("EquipamentsType"));
+                eq.setEquipamentsType(t);
 
             return eq;
         } catch (SQLException ex) {

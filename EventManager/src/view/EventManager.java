@@ -96,7 +96,7 @@ public class EventManager extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_Primary_logo_on_transparent_159x73.png"))); // NOI18N
         desktop.add(jLabel1);
-        jLabel1.setBounds(240, 210, 122, 73);
+        jLabel1.setBounds(280, 230, 122, 73);
 
         menuAdmin.setText("Admin");
 
@@ -140,6 +140,7 @@ public class EventManager extends javax.swing.JFrame {
         });
         menuAdmin.add(jMenuItem3);
 
+        jMenuItemEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/baseline_place_black_18dp.png"))); // NOI18N
         jMenuItemEvent.setLabel("Event");
         jMenuItemEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,14 +199,14 @@ public class EventManager extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktop)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktop)
+                .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
