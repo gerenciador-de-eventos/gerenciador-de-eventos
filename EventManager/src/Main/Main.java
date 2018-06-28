@@ -1,5 +1,6 @@
 package Main;
 
+import java.sql.SQLException;
 import view.EventManager;
 
 
@@ -9,6 +10,8 @@ public class Main  {
         
         EventManager e = new EventManager();
         e.setVisible(true);
+        
+        
       
     }
 }

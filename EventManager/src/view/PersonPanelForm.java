@@ -6,6 +6,7 @@
 package view;
 
 import Controller.PersonController;
+import Database.Database;
 import com.toedter.calendar.JDateChooser;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,10 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -128,6 +133,7 @@ public class PersonPanelForm extends javax.swing.JPanel {
         jComboBoxHourWork = new javax.swing.JComboBox<>();
         txtPassword = new javax.swing.JPasswordField();
         btnClean = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         btnAdd.setText("add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +214,13 @@ public class PersonPanelForm extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,7 +276,9 @@ public class PersonPanelForm extends javax.swing.JPanel {
                                 .addGap(43, 43, 43)
                                 .addComponent(btnEdit)
                                 .addGap(38, 38, 38)
-                                .addComponent(btnClean)))
+                                .addComponent(btnClean)
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -308,7 +323,8 @@ public class PersonPanelForm extends javax.swing.JPanel {
                     .addComponent(btnAdd)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit)
-                    .addComponent(btnClean))
+                    .addComponent(btnClean)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -352,12 +368,33 @@ public class PersonPanelForm extends javax.swing.JPanel {
         controller.reset();
     }//GEN-LAST:event_btnCleanActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+Database db = new Database();
+       
+       db.connect();
+       
+       String src = "PessoaReport.jasper";
+       
+       JasperPrint jasperprint = null;
+       try{
+            jasperprint = JasperFillManager.fillReport(src, null);
+        
+        }catch(JRException ex){
+                   System.out.println("Erro");
+        }
+       
+       JasperViewer view = new JasperViewer(jasperprint, false);
+       
+       view.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRemove;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBoxPrivileges;
     private javax.swing.JComboBox<String> jComboBoxHourWork;
     private com.toedter.calendar.JDateChooser jDateChooserDateBirth;

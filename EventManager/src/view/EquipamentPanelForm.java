@@ -6,7 +6,11 @@
 package view;
 
 import Controller.EquipamentController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Type;
+import net.sf.jasperreports.engine.JRException;
 
 
 /**
@@ -76,7 +80,7 @@ public class EquipamentPanelForm extends javax.swing.JInternalFrame {
         btnEdit = new javax.swing.JButton();
         btnClean = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Equipamento");
 
         tableEquipament.setModel(new javax.swing.table.DefaultTableModel(
@@ -177,7 +181,7 @@ public class EquipamentPanelForm extends javax.swing.JInternalFrame {
                 .addComponent(btnEdit)
                 .addGap(38, 38, 38)
                 .addComponent(btnClean)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +204,7 @@ public class EquipamentPanelForm extends javax.swing.JInternalFrame {
                     .addComponent(btnRemove)
                     .addComponent(btnEdit)
                     .addComponent(btnClean))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

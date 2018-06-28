@@ -6,6 +6,7 @@
 package view;
 
 import Controller.PersonController;
+import Database.Conexao;
 import com.toedter.calendar.JDateChooser;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,20 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import Database.Database;
+import Database.DatabaseGeneric;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.management.remote.JMXConnectorFactory.connect;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import reports.PersonReport;
 
 /**
  *
@@ -28,6 +43,10 @@ public class PersonJframe extends javax.swing.JInternalFrame {
     private static final long serialVersionUID = 1L;
     private final PersonController controller;
     private EventManager viewPrincipal;
+    
+    
+    
+    
 
     public PersonJframe() {
         initComponents();
@@ -149,8 +168,9 @@ public class PersonJframe extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        btnRelatorio = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jCheckBoxPrivileges.setLabel("Admin");
 
@@ -231,6 +251,13 @@ public class PersonJframe extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Hour work:");
 
+        btnRelatorio.setText("Gerar relatório");
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,7 +313,9 @@ public class PersonJframe extends javax.swing.JInternalFrame {
                                 .addGap(43, 43, 43)
                                 .addComponent(btnEdit)
                                 .addGap(38, 38, 38)
-                                .addComponent(btnClean)))
+                                .addComponent(btnClean)
+                                .addGap(42, 42, 42)
+                                .addComponent(btnRelatorio)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -331,7 +360,8 @@ public class PersonJframe extends javax.swing.JInternalFrame {
                     .addComponent(btnAdd)
                     .addComponent(btnRemove)
                     .addComponent(btnEdit)
-                    .addComponent(btnClean))
+                    .addComponent(btnClean)
+                    .addComponent(btnRelatorio))
                 .addContainerGap())
         );
 
@@ -375,6 +405,25 @@ public class PersonJframe extends javax.swing.JInternalFrame {
         controller.getDataField();
     }//GEN-LAST:event_tablePersonMouseClicked
 
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+
+     
+        Connection db = Conexao.getConnection();
+        
+       String src = "relatorioPessoa.jasper";
+       
+       JasperPrint jasperprint = null;
+        try {
+            jasperprint = JasperFillManager.fillReport(src, null, db);
+        } catch (JRException ex) {
+            System.out.println("erro " + ex);
+        }
+       
+       JasperViewer view = new JasperViewer(jasperprint, false);
+       view.setVisible(true);
+      
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +463,7 @@ public class PersonJframe extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnRemove;
     private javax.swing.JCheckBox jCheckBoxPrivileges;
     private javax.swing.JComboBox<String> jComboBoxHourWork;
