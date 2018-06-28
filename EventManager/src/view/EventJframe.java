@@ -12,6 +12,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import model.Campus;
+import model.DAO.CampusDAO;
+import model.DAO.EquipamentDAO;
+import model.DAO.PlaceDAO;
+import model.Equipaments;
+import model.Place;
 
 /**
  *
@@ -30,9 +36,7 @@ public class EventJframe extends javax.swing.JInternalFrame {
     public EventJframe() {
         initComponents();
 
-        jComboBoxCampus.insertItemAt("08h - 13h", 0);
-        jComboBoxCampus.insertItemAt("13h - 18h", 1);
-        jComboBoxCampus.insertItemAt("18h - 23h", 2);
+       
         jDateChooserDateEvent.setCalendar(Calendar.getInstance());
     }
 
@@ -46,10 +50,32 @@ public class EventJframe extends javax.swing.JInternalFrame {
         //Carrega todas os modelos de tabelas.
         initComponents();
 
-        jComboBoxCampus.insertItemAt("1", 0);
-        jComboBoxCampus.insertItemAt("2", 1);
-        jComboBoxCampus.insertItemAt("3", 2);
+        
         jDateChooserDateEvent.setCalendar(Calendar.getInstance());
+        
+        CampusDAO campusdao = new CampusDAO();
+        
+        for(Campus c: campusdao.getAllCampus()){            
+            jComboBoxCampus.addItem(c);            
+        } 
+        
+        PlaceDAO placedao = new PlaceDAO();
+        
+        for(Place p: placedao.getAllCampus()){
+            jComboBoxPlace.addItem(p);
+        }
+        
+        /*EquipamentDAO equipdao = new EquipamentDAO();
+        
+        for(Equipaments e: equipdao.getAllEquipaments()){
+            if(e.getEquipamentsType().equals("microfone"){
+                jComboBox.addItem(e);
+            }
+            
+        }*/
+        
+        
+        
     }
 
     public JTable getTableEvent() {
@@ -303,10 +329,9 @@ public class EventJframe extends javax.swing.JInternalFrame {
                                                 .addComponent(jLabel4)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jComboBoxPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jComboBoxProjector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jComboBoxTrainee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel6))))))))
+                                            .addComponent(jComboBoxProjector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBoxTrainee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6)))))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,10 +503,10 @@ public class EventJframe extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JComboBox<String> jComboBoxCampus;
+    private javax.swing.JComboBox<Object> jComboBoxCampus;
     private javax.swing.JComboBox<String> jComboBoxMicrophone;
     private javax.swing.JComboBox<String> jComboBoxNotebook;
-    private javax.swing.JComboBox<String> jComboBoxPlace;
+    private javax.swing.JComboBox<Object> jComboBoxPlace;
     private javax.swing.JComboBox<String> jComboBoxProjector;
     private javax.swing.JComboBox<String> jComboBoxTrainee;
     private com.toedter.calendar.JDateChooser jDateChooserDateEvent;
